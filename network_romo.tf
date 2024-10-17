@@ -78,7 +78,7 @@ resource "aws_route_table" "route_table_romo_public" {
         }
         
         tags = {
-            Name = "Tabla_enrrutmiento_romo"
+            Name = "Tabla_enrrutmiento_romo_Public"
             }
 }
 #Creacion de la tabla de enrrutamiento
@@ -92,7 +92,7 @@ resource "aws_route_table" "route_table_romo_private" {
         }
         
         tags = {
-            Name = "Tabla_enrrutmiento_romo"
+            Name = "Tabla_enrrutmiento_romo_Private"
             }
 }
 
