@@ -140,6 +140,16 @@ resource "aws_security_group" "rds_sg" {
         }
 }
 
+# Creación del grupo de subredes para RDS
+resource "aws_db_subnet_group" "rds_subnet_group" {
+    name       = "rds_subnet_group"
+    subnet_ids = [aws_subnet.public_1.id, aws_subnet.public_2.id]
+
+    tags = {
+    Name = "rds_subnet_group"
+    }
+}
+
 # Creación de la instancia de RDS MySQL
 resource "aws_db_instance" "mysql_romo" {
     allocated_storage    = 20                       # Tamaño en GB
@@ -160,15 +170,6 @@ resource "aws_db_instance" "mysql_romo" {
     }
 }
 
-# Creación del grupo de subredes para RDS
-resource "aws_db_subnet_group" "rds_subnet_group" {
-    name       = "rds_subnet_group"
-    subnet_ids = [aws_subnet.public_1.id, aws_subnet.public_2.id]
-
-    tags = {
-    Name = "rds_subnet_group"
-    }
-}
 
 # Output para mostrar el endpoint de la base de datos
 #output "rds_endpoint" {
